@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <meta charset=utf8>
+    <title>Sokoban Editor</title>
+    <link href="http://cdn.airy.me/reset.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="http://cdn.airy.me/jquery.js"></script>
+    <style>
+        body {}
+        td {width: 32px; height: 32px;}
+        tr.wall td, td.wall {background: url(images/sprite32.png) no-repeat -32px -32px;}
+        td.box {background: url(images/sprite32.png) no-repeat 0px -64px;}
+        td.block {background: url(images/sprite32.png) no-repeat 0px -32px;}
+        td.player {background: url(images/sprite32.png) no-repeat -64px -96px;}
+        td.target {background: url(images/sprite32.png) no-repeat -32px 0px;}
+    </style>
+    <script>
+        $(function(){
+            $('td').click(function(){
+                if (!$(this).hasClass('wall')) {
+                    switch($(this).attr('data-class')) {
+                        case 'block':
+                            $(this).removeClass('block').addClass('box').attr('data-class','box');
+                        
+                        break;
+                        case 'box':
+                            $(this).removeClass('box').addClass('target').attr('data-class','target');
+                        
+                        break;
+                        case 'target':
+                            $(this).removeClass('target').addClass('player').attr('data-class','player');
+                        
+                        break;
+                        case 'player':
+                            $(this).removeClass('player').addClass('block').attr('data-class','block');
+                        
+                        break;
+                        default:
+                            $(this).addClass('block').attr('data-class','block');
+                    }     
+                }
+               
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <div id="area">
+        <table>
+            <tr class="top wall">
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr>
+                <td class="wall"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="wall"></td>
+            </tr>
+            <tr class="wall bottom">
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
